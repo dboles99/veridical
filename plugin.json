@@ -1,0 +1,47 @@
+{
+  "slug": "Veridical",
+  "name": "Veridical",
+  "version": "2.0.0",
+  "license": "GPL-3.0-or-later",
+  "brand": "eddie_dodd",
+  "author": "eddie_dodd",
+  "authorEmail": "eddie_dodd99@protonmail.com",
+  "authorUrl": "https://eddiedodd.bandcamp.com",
+  "pluginUrl": "https://github.com/dboles99/veridical",
+  "manualUrl": "https://github.com/dboles99/veridical/blob/main/README.md",
+  "sourceUrl": "https://github.com/dboles99/veridical",
+  "changelogUrl": "https://github.com/dboles99/veridical/blob/main/CHANGELOG.md",
+  "description": "Five modulation effects that do what their labels say.",
+  "modules": [
+    {
+      "slug": "Flanger",
+      "name": "Flanger",
+      "description": "Through-zero capable flanger with bipolar feedback.",
+      "tags": ["Flanger", "Effect", "Polyphonic"]
+    },
+    {
+      "slug": "Chorus",
+      "name": "Chorus",
+      "description": "Two, three or four voice chorus.",
+      "tags": ["Chorus", "Effect", "Polyphonic"]
+    },
+    {
+      "slug": "Phaser",
+      "name": "Phaser",
+      "description": "Four, six or eight stage phaser with feedback.",
+      "tags": ["Phaser", "Effect", "Polyphonic"]
+    },
+    {
+      "slug": "RingMod",
+      "name": "Ring Mod",
+      "description": "Ring modulator with an internal sine carrier.",
+      "tags": ["Ring modulator", "Effect", "Polyphonic"]
+    },
+    {
+      "slug": "EnvFollower",
+      "name": "Env Follower",
+      "description": "Envelope follower with gate output.",
+      "tags": ["Envelope follower", "Utility", "Polyphonic"]
+    }
+  ]
+}
