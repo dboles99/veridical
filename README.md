@@ -126,5 +126,12 @@ the SDK.
 ## Licence
 
 Copyright (C) 2026 eddie_dodd. Released under the GPL, version 3 or later; see
-LICENSE. Panel lettering is outlined from DejaVu Sans, which is free to use and
+LICENSE.
+
+That covers the panel artwork as well as the code. The panel SVGs, the knobs, the
+attenuverters, the jacks and the switch are all original work for this plugin and
+are GPL-3.0-or-later like everything else, so they can be redistributed and
+modified, including into variants I have not made.
+
+Panel lettering is outlined from DejaVu Sans, which is free to use and
 redistribute under the Bitstream Vera and Arev licences.
