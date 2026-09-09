@@ -18,13 +18,15 @@ jobs:
     name: win-x64
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: msys2/setup-msys2@v2
         with:
           msystem: MINGW64
           update: false
-          install: mingw-w64-x86_64-gcc make
+          # plugin.mk shells out to jq to read SLUG and VERSION from the
+          # manifest. Without it the build fails before compiling anything.
+          install: mingw-w64-x86_64-gcc make jq
 
       - name: Get the Rack SDK
         shell: pwsh
@@ -68,7 +70,7 @@ jobs:
             expect: x86_64
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Get the Rack SDK
         run: |
