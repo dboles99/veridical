@@ -116,6 +116,13 @@ jobs:
     permissions:
       contents: write
     steps:
+      # gh refuses --notes-from-tag together with --repo, so check out instead
+      # and let it work out where it is from the remote. fetch-depth 0 brings
+      # the tags, which is where the notes come from.
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
       - uses: actions/download-artifact@v4
         with:
           pattern: vcvplugin-*
@@ -135,11 +142,9 @@ jobs:
             echo "::error::expected 4 builds, found $n"
             exit 1
           fi
-          if ! gh release view "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+          if ! gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
             gh release create "${GITHUB_REF_NAME}" \
-              --repo "${GITHUB_REPOSITORY}" \
               --title "${GITHUB_REF_NAME}" \
               --notes-from-tag --verify-tag
           fi
-          gh release upload "${GITHUB_REF_NAME}" dist/*.vcvplugin \
-            --clobber --repo "${GITHUB_REPOSITORY}"
+          gh release upload "${GITHUB_REF_NAME}" dist/*.vcvplugin --clobber
