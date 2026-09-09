@@ -134,15 +134,15 @@ struct ChorusWidget : VeridicalWidget {
 		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 24.0)), module, Chorus::RATE_ATT_PARAM));
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 24.0)), module, Chorus::RATE_INPUT));
 
-		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 43.0)), module, Chorus::DEPTH_PARAM));
-		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 43.0)), module, Chorus::DEPTH_ATT_PARAM));
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 43.0)), module, Chorus::DEPTH_INPUT));
+		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 46.0)), module, Chorus::DEPTH_PARAM));
+		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 46.0)), module, Chorus::DEPTH_ATT_PARAM));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 46.0)), module, Chorus::DEPTH_INPUT));
 
-		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 62.0)), module, Chorus::MIX_PARAM));
-		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 62.0)), module, Chorus::MIX_ATT_PARAM));
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 62.0)), module, Chorus::MIX_INPUT));
+		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 68.0)), module, Chorus::MIX_PARAM));
+		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 68.0)), module, Chorus::MIX_ATT_PARAM));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 68.0)), module, Chorus::MIX_INPUT));
 
-		addParam(createParamCentered<VeridicalSwitch>(mm2px(Vec(11.8, 81.0)), module, Chorus::VOICES_PARAM));
+		addParam(createParamCentered<VeridicalSwitch>(mm2px(Vec(11.8, 90.0)), module, Chorus::VOICES_PARAM));
 
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(8.315, 113.0)), module, Chorus::IN_L_INPUT));
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(19.705, 113.0)), module, Chorus::IN_R_INPUT));

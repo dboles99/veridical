@@ -16,31 +16,31 @@
     {
       "slug": "Flanger",
       "name": "Flanger",
-      "description": "Through-zero capable flanger with bipolar feedback.",
+      "description": "Stereo flanger with bipolar feedback.",
       "tags": ["Flanger", "Effect", "Polyphonic"]
     },
     {
       "slug": "Chorus",
       "name": "Chorus",
-      "description": "Two, three or four voice chorus.",
+      "description": "Stereo chorus with two, three or four voices.",
       "tags": ["Chorus", "Effect", "Polyphonic"]
     },
     {
       "slug": "Phaser",
       "name": "Phaser",
-      "description": "Four, six or eight stage phaser with feedback.",
+      "description": "Stereo phaser with four, six or eight allpass stages.",
       "tags": ["Phaser", "Effect", "Polyphonic"]
     },
     {
       "slug": "RingMod",
       "name": "Ring Mod",
-      "description": "Ring modulator with an internal sine carrier.",
+      "description": "Stereo ring modulator with an internal sine carrier.",
       "tags": ["Ring modulator", "Effect", "Polyphonic"]
     },
     {
       "slug": "EnvFollower",
       "name": "Env Follower",
-      "description": "Envelope follower with gate output.",
+      "description": "Stereo envelope follower with gate outputs.",
       "tags": ["Envelope follower", "Utility", "Polyphonic"]
     }
   ]

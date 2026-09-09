@@ -101,15 +101,15 @@ struct RingModWidget : VeridicalWidget {
 		setModule(module);
 		loadPanels("RingMod");
 
-		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 30.0)), module, RingMod::FREQ_PARAM));
-		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 30.0)), module, RingMod::FREQ_ATT_PARAM));
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 30.0)), module, RingMod::FREQ_INPUT));
+		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 26.0)), module, RingMod::FREQ_PARAM));
+		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 26.0)), module, RingMod::FREQ_ATT_PARAM));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 26.0)), module, RingMod::FREQ_INPUT));
 
 		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 56.0)), module, RingMod::MIX_PARAM));
 		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 56.0)), module, RingMod::MIX_ATT_PARAM));
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 56.0)), module, RingMod::MIX_INPUT));
 
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 82.0)), module, RingMod::CARRIER_INPUT));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 86.0)), module, RingMod::CARRIER_INPUT));
 
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(8.315, 113.0)), module, RingMod::IN_L_INPUT));
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(19.705, 113.0)), module, RingMod::IN_R_INPUT));

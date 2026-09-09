@@ -141,17 +141,17 @@ struct FlangerWidget : VeridicalWidget {
 		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 24.0)), module, Flanger::RATE_ATT_PARAM));
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 24.0)), module, Flanger::RATE_INPUT));
 
-		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 43.0)), module, Flanger::DEPTH_PARAM));
-		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 43.0)), module, Flanger::DEPTH_ATT_PARAM));
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 43.0)), module, Flanger::DEPTH_INPUT));
+		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 46.0)), module, Flanger::DEPTH_PARAM));
+		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 46.0)), module, Flanger::DEPTH_ATT_PARAM));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 46.0)), module, Flanger::DEPTH_INPUT));
 
-		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 62.0)), module, Flanger::FEEDBACK_PARAM));
-		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 62.0)), module, Flanger::FEEDBACK_ATT_PARAM));
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 62.0)), module, Flanger::FEEDBACK_INPUT));
+		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 68.0)), module, Flanger::FEEDBACK_PARAM));
+		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 68.0)), module, Flanger::FEEDBACK_ATT_PARAM));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 68.0)), module, Flanger::FEEDBACK_INPUT));
 
-		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 81.0)), module, Flanger::MIX_PARAM));
-		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 81.0)), module, Flanger::MIX_ATT_PARAM));
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 81.0)), module, Flanger::MIX_INPUT));
+		addParam(createParamCentered<VeridicalKnob>(mm2px(Vec(11.8, 90.0)), module, Flanger::MIX_PARAM));
+		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 90.0)), module, Flanger::MIX_ATT_PARAM));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 90.0)), module, Flanger::MIX_INPUT));
 
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(8.315, 113.0)), module, Flanger::IN_L_INPUT));
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(19.705, 113.0)), module, Flanger::IN_R_INPUT));

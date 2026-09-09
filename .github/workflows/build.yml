@@ -1,0 +1,143 @@
+name: Build
+
+on:
+  push:
+    branches: ["main"]
+    tags: ["v*"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+env:
+  SDK_VERSION: "2.6.6"
+
+jobs:
+  windows:
+    name: win-x64
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: false
+          install: mingw-w64-x86_64-gcc make
+
+      - name: Get the Rack SDK
+        shell: pwsh
+        run: |
+          curl -L "https://vcvrack.com/downloads/Rack-SDK-$env:SDK_VERSION-win-x64.zip" -o Rack-SDK.zip
+          7z x Rack-SDK.zip
+
+      - name: Build
+        shell: msys2 {0}
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          RACK_DIR="$GITHUB_WORKSPACE/Rack-SDK" make -j4 dist
+
+      - name: Check the panels
+        shell: msys2 {0}
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          RACK_DIR="$GITHUB_WORKSPACE/Rack-SDK" sh tools/panelcheck.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vcvplugin-win-x64
+          path: dist/*.vcvplugin
+          if-no-files-found: error
+
+  unix:
+    name: ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: lin-x64
+            expect: x86-64
+          - os: macos-latest
+            arch: mac-arm64
+            expect: arm64
+          - os: macos-latest
+            arch: mac-x64
+            cross: x86_64-apple-darwin
+            expect: x86_64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get the Rack SDK
+        run: |
+          curl -L "https://vcvrack.com/downloads/Rack-SDK-${SDK_VERSION}-${{ matrix.arch }}.zip" -o Rack-SDK.zip
+          unzip -q Rack-SDK.zip
+
+      # CROSS_COMPILE is empty on the native slices, and make treats an empty
+      # value as undefined, so arch.mk detects the host by itself.
+      - name: Build
+        env:
+          CROSS_COMPILE: ${{ matrix.cross }}
+        run: RACK_DIR="$GITHUB_WORKSPACE/Rack-SDK" make -j4 dist
+
+      - name: Check the panels
+        run: RACK_DIR="$GITHUB_WORKSPACE/Rack-SDK" sh tools/panelcheck.sh
+
+      # Ask the binary what it is rather than trusting the filename. Both are
+      # derived from the same variable, so a filename check would pass by
+      # construction and tell us nothing about the x64 slice cross-built on an
+      # arm64 runner.
+      - name: Confirm the architecture
+        run: |
+          bin=$(ls plugin.so plugin.dylib 2>/dev/null | head -1)
+          [ -n "$bin" ] || { echo "::error::nothing was built"; exit 1; }
+          desc=$(file -b "$bin")
+          echo "$bin: $desc"
+          case "$desc" in
+            *${{ matrix.expect }}*) ;;
+            *) echo "::error::wanted ${{ matrix.expect }}, got $desc"; exit 1 ;;
+          esac
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vcvplugin-${{ matrix.arch }}
+          path: dist/*.vcvplugin
+          if-no-files-found: error
+
+  release:
+    name: attach binaries
+    needs: [windows, unix]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: vcvplugin-*
+          path: dist
+          merge-multiple: true
+
+      - run: ls -lh dist/
+
+      # A tag is not a release. `gh release upload` fails against a tag with no
+      # release object, so create one first if it is missing.
+      - name: Upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(ls dist/*.vcvplugin | wc -l)
+          if [ "$n" -ne 4 ]; then
+            echo "::error::expected 4 builds, found $n"
+            exit 1
+          fi
+          if ! gh release view "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            gh release create "${GITHUB_REF_NAME}" \
+              --repo "${GITHUB_REPOSITORY}" \
+              --title "${GITHUB_REF_NAME}" \
+              --notes-from-tag --verify-tag
+          fi
+          gh release upload "${GITHUB_REF_NAME}" dist/*.vcvplugin \
+            --clobber --repo "${GITHUB_REPOSITORY}"

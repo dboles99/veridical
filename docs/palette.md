@@ -57,6 +57,29 @@ The attenuverters are the same two colours at a smaller size.
 Labels stay neutral gray. Do not tint them green to match the knobs — the knobs
 being the only colour on the panel is the whole design.
 
+## Jacks, switch and rules
+
+The jacks and the three-position switch are drawn for this plugin too, for the same
+reason as the knobs: one asset has to sit on both grounds. They stay achromatic so
+the knobs remain the only colour.
+
+| Role | Hex |
+|---|---|
+| Jack and switch body | `#242424` |
+| Jack and switch outer ring | `#7D7D7D` |
+| Jack inner ring | `#3D3D3D` |
+| Jack hole | `#0A0A0A` |
+
+The switch handle uses the knob fill and outline, so the moving part reads as a
+control rather than as part of the panel.
+
+The one horizontal divider is the only panel-drawn line, and it is the only colour
+that differs per variant without being type:
+
+| Role | Dark | Light |
+|---|---|---|
+| Divider rule | `#3A3A3A` | `#C6C1B6` |
+
 ## The adjacency that breaks
 
 `#8B9A8C` knob fill against `#9A9A9A` control label is close to identical in

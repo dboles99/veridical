@@ -141,10 +141,10 @@ struct EnvFollowerWidget : VeridicalWidget {
 		addParam(createParamCentered<VeridicalTrim>(mm2px(Vec(25.4, 68.0)), module, EnvFollower::GAIN_ATT_PARAM));
 		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(39.0, 68.0)), module, EnvFollower::GAIN_INPUT));
 
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(19.705, 90.0)), module, EnvFollower::IN_L_INPUT));
-		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(31.095, 90.0)), module, EnvFollower::IN_R_INPUT));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(19.705, 91.0)), module, EnvFollower::IN_L_INPUT));
+		addInput(createInputCentered<VeridicalPort>(mm2px(Vec(31.095, 91.0)), module, EnvFollower::IN_R_INPUT));
 
-		addChild(createLightCentered<SmallLight<GreenLight>>(mm2px(Vec(14.01, 100.5)), module, EnvFollower::ENV_LIGHT));
+		addChild(createLightCentered<SmallLight<GreenLight>>(mm2px(Vec(14.01, 101.0)), module, EnvFollower::ENV_LIGHT));
 
 		addOutput(createOutputCentered<VeridicalPort>(mm2px(Vec(8.315, 113.0)), module, EnvFollower::ENV_L_OUTPUT));
 		addOutput(createOutputCentered<VeridicalPort>(mm2px(Vec(19.705, 113.0)), module, EnvFollower::ENV_R_OUTPUT));
